@@ -9,11 +9,12 @@ Username.prototype.getRepos = function(username){
   $.get('https://api.github.com/users/'+ username +'?access_token=' + apiKey).then(function(response){
     var reposLink = response.repos_url;
 
-  $.get(reposLink + "?page=1&per_page=100").then(function(response){
+  $.get(reposLink + "?page=1&per_page=500").then(function(response){
     response.forEach(function(repo){
     var name = repo.name;
     var description = repo.description;
-    $('.showResults').append("<li>" + name + ": " + description + "</li>");
+    var repoURL = repo.html_url;
+    $('.showResults').append("<li>" + "Name: " + "<a target='_blank' href='" + repoURL + "'>" + name + "</a>" + " | " + "Description: " + description + "</li>");
     $('#resultHeader').show();
   });
       }).fail(function(error){
