@@ -6,7 +6,7 @@ function Username(){
 
 
 Username.prototype.getRepos = function(username){
-  $.get('https://api.github.com/users/ohinton?access_token=' + apiKey).then(function(response){
+  $.get('https://api.github.com/users/'+ username +'?access_token=' + apiKey).then(function(response){
     var reposLink = response.repos_url;
 
   $.get(reposLink).then(function(response){
