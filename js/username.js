@@ -10,11 +10,11 @@ Username.prototype.getRepos = function(username, displayFunction, detailsFunctio
   $.get(reposLink + "?page=1&per_page=500").then(function(response){
     response.forEach(function(repo){
       var formattedDate = moment(repo.created_at).format('MMM D, YYYY @ h:mm a');
-      detailsFunction(repo.name, repo.description, repo.html_url, formattedDate)
+      detailsFunction(repo.name, repo.description, repo.html_url, formattedDate);
       });
+    });
     }).fail(function(error){
     $('#showResults').text(error.responseJSON.message);
-    });
   });
 };
 
