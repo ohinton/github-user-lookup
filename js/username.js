@@ -5,15 +5,10 @@ function Username(){
 }
 
 
-Username.prototype.getRepos = function(username){
+Username.prototype.getRepos = function(username, displayFunction){
   $.get('https://api.github.com/users/'+ username +'?access_token=' + apiKey).then(function(response){
     var reposLink = response.repos_url;
-    var username = response.name;
-    var userLocation = response.location;
-    var userPhoto= response.avatar_url;
-    $('#resultName').text("Name: " + username);
-    $('#resultLocation').text("Location: " + userLocation);
-    $('#resultPhoto').html("<img src='" + userPhoto + "' alt='user avatar' class='img-circle'>");
+    displayFunction(response.name, response.location, response.avatar_url);
 
   $.get(reposLink + "?page=1&per_page=500").then(function(response){
     response.forEach(function(repo){
