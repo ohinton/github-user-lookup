@@ -10,6 +10,10 @@ Look up any GitHub user's repositories with this handy app!
 
 * Open terminal
 * Clone this repository
+* Create a .env file in the top level of this project and add:
+```
+exports.apiKey = "YOUR-GITHUB-API-TOKEN-HERE";
+```
 * Run command `$ npm install` to install Node.js packages
 * Run command `$ bower install` to install Bower packages
 * Run command `$ gulp build --production`
