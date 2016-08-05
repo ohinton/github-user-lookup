@@ -10,8 +10,10 @@ Username.prototype.getRepos = function(username){
     var reposLink = response.repos_url;
     var username = response.name;
     var userLocation = response.location;
+    var userPhoto= response.avatar_url;
     $('#resultName').text("Name: " + username);
     $('#resultLocation').text("Location: " + userLocation);
+    $('#resultPhoto').html("<img src='" + userPhoto + "' alt='user avatar' class='img-circle'>");
 
   $.get(reposLink + "?page=1&per_page=500").then(function(response){
     response.forEach(function(repo){
