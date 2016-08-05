@@ -1,10 +1,11 @@
 var Username = require('./../js/username.js').usernameModule;
 var apiKey = require('./../.env').apiKey;
 
-exports.getRepos = function(){
-  $.get('https://api.github.com/users/daneden?access_token=' + apiKey).then(function(response){
-    console.log(response);
-  }).fail(function(error){
-    console.log(error.responseJSON.message);
+
+$(document).ready(function() {
+  var currentUsernameObject = new Username();
+  $('#submitUsername').click(function() {
+    var username = $('#username').val();
+    currentUsernameObject.getRepos(username);
+    });
   });
-};
