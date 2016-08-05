@@ -14,7 +14,10 @@ Username.prototype.getRepos = function(username){
     var name = repo.name;
     var description = repo.description;
     var repoURL = repo.html_url;
-    $('.showResults').append("<li>" + "Name: " + "<a target='_blank' href='" + repoURL + "'>" + name + "</a>" + " | " + "Description: " + description + "</li>");
+    var createdAt = repo.created_at;
+    var formattedDate = moment(createdAt).format('MMM D, YYYY @ h:mm a');
+
+    $('.showResults').append("<li>" + "Name: " + "<a target='_blank' href='" + repoURL + "'>" + name + "</a>" + "<br>" + "Description: " + description + "<br>" + "Created: " + formattedDate + "</li>" + "<br>");
     $('#resultHeader').show();
   });
       }).fail(function(error){
